@@ -1,31 +1,18 @@
 import React from 'react';
+import classNames from 'classnames'
 
-export default class Buttons extends React.Component {
-  constructor(props) {
+export default class App extends React.Component {
+  contructor(props) {
     super(props);
-    this.state = { count: 1, primary: false };
+    this.state = {
+      leftBtnToggled: false,
+      rigthBtnToggled: false,
+    };
   }
   
-  onIncrement = () => {
-    this.setState((state, props) => ({ count: count + 1 }));
-  };
+  handleClick = () => {
+    this.setState((state) => {});
+  }
 
-  onChangeClass = () => {
-    this.setState(({ primary }) => ({ primary: !primary }));
-  };
-  
-  render() {
-    const buttonClass = classNames([
-      'btn',
-      this.state.primary ? 'btn-primary' : 'btn-secondary'
-    ]);
-    return <div>
-      <button className="btn btn-secondary m-3" onClick={this.onIncrement}>
-        count: {this.state.count}
-      </button>
-      <button className={buttonClass} onClick={this.onChangeClass}>
-        button
-      </button>
-    </div>;
-  }
+  render() {}
 }
