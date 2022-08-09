@@ -1,0 +1,27 @@
+body {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: gainsboro;
+}
+
+.carousel {
+  background-color: bisque;
+}
+
+.carousel-control-prev {
+  margin-left: 20%
+}
+
+.carousel-control-next {
+  margin-left: 5%;
+}
+
+.carousel-item {
+  width: 100px;
+  height: 100px;
+}
+
+.d-block {
+  display: block;
+  width: 100%;
+}
