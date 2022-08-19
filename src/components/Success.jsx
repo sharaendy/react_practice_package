@@ -12,7 +12,7 @@ export default function Success({ count }) {
         {' '}
         пользователям отправлено приглашение.
       </p>
-      <button className="send-invite-btn" type="button">
+      <button onClick={() => window.location.reload()} className="send-invite-btn" type="button">
         Назад
       </button>
     </div>

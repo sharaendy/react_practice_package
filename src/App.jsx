@@ -3,11 +3,11 @@ import Success from './components/Success.jsx';
 import Users from './components/Users';
 import './styles.scss';
 
-// список пользователей: https://reqres.in/api/users
-
 export default function App() {
   const [users, setUsers] = React.useState([]);
+  const [invites, setInvites] = React.useState([]);
   const [isLoading, setLoading] = React.useState(true);
+  const [success, setSuccess] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
 
   React.useEffect(() => {
@@ -16,7 +16,7 @@ export default function App() {
       .then((json) => setUsers(json.data))
       .catch((err) => {
         console.warn(err);
-        alert('данные с сервера не получены');
+        alert('Сервер не отвечает');
       })
       .finally(() => setLoading(false));
   }, []);
@@ -26,15 +26,32 @@ export default function App() {
     setSearchValue(value);
   };
 
+  const onClickInvite = (id) => {
+    if (invites.includes(id)) {
+      setInvites((prev) => prev.filter((_id) => _id !== id));
+    }
+    setInvites((prev) => [...prev, id]);
+  };
+
+  const onClickSentInvites = () => {
+    setSuccess(true);
+  };
+
   return (
     <div className="App">
-      <Users
-        items={users}
-        isLoading={isLoading}
-        searchValue={searchValue}
-        onChangeSearchValue={onChangeSearchValue}
-      />
-      {/* <Success /> */}
+      {success ? (
+        <Success count={invites.length} />
+      ) : (
+        <Users
+          items={users}
+          isLoading={isLoading}
+          searchValue={searchValue}
+          onChangeSearchValue={onChangeSearchValue}
+          invites={invites}
+          onClickInvite={onClickInvite}
+          onClickSentInvites={onClickSentInvites}
+        />
+      )}
     </div>
   );
 }

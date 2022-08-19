@@ -25,7 +25,8 @@
     "react/react-in-jsx-scope": 0,
     "no-underscore-dangle": ["error"],
     "no-console": 0,
-    "no-alert": 0
+    "no-alert": 0,
+    "camelcase": 0
     // "no-return-assign": ["except-parens"],
     // "react/jsx-filename-extension": [
     //   1,
