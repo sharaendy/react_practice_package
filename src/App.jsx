@@ -1,5 +1,5 @@
 import React from 'react';
-import Persons from './components/persons/Persons.js';
+import Persons from './components/persons/Persons';
 import './style.scss';
 
 function App() {

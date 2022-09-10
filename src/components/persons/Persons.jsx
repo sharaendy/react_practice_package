@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import './style.scss';
-import Modal from '../modal/Modal';
 import Person from '../person/Person';
+import Modal from '../modal/Modal';
+import './style.scss';
 
 export default class Persons extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       persons: [],
       show: false,
@@ -16,18 +15,20 @@ export default class Persons extends React.Component {
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
   }
+
+  componentDidMount() {
+    axios.get('/api/v1/persons/').then((res) => {
+      const data = res.data;
+      this.setState({ persons: data });
+    });
+  }
+
   showModal() {
     this.setState({ show: true });
   }
 
   hideModal() {
     this.setState({ show: false });
-  }
-  componentDidMount() {
-    axios.get(`/api/v1/persons/`).then((res) => {
-      const data = res.data;
-      this.setState({ persons: data });
-    });
   }
 
   render() {
